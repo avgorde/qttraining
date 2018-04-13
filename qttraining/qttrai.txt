@@ -1,0 +1,452 @@
+Qt
+
+Object
+
++----------------+
+|                |
+
+What is an object?
+object is an instance of a class
+
+Every real life entity would be map to an object.
+
+	+---------------+	+---------------+	
+	|		|	|		|	
+	+---------------+	+---------------+
+		Object A	 Object Y
+
+
+Class X{
+public:
+X();
+};
+
+Class Y{};
+
+int main()
+{
+  X a;
+  Y y;
+
+  X *a=new X();
+  Y *y=new Y();
+ return 0;
+}
+
+
+
+
+	+---------------+	+---------------+	
+	|		|----->	|		|	
+	+---------------+	+---------------+
+		Object A	 Object Y
+		
+	Class X			Class Y
+
+	100			200
+	+---------------+	+---------------+	
+	|	200	|----->	|		|	
+	+---------------+	+---------------+
+
+	
+ class X{
+	public:
+  Y *m_py
+ };
+class Y{};
+
+int main()
+{
+ X px=new X();
+ Y py=new Y();
+ px->m_py=py;
+
+ return 0;
+}
+
+
+
+
+Name/Identifier			Box(Memory Location)
+			      +-----------+
+		         ---> |	10	  |
+			      +-----------+
+				100    <----Address
+
+&i------> Address
+address is a number
+
+
+Is address and pointer, one and same?
+No. Address and pointer are two different things.
+
+
+Name/Identifier			Box(Memory Location)
+			      +-----------+
+		    i    ---> |	10	  |
+			      +-----------+
+				100    <----Address
+
+
+Name/Identifier			Box(Memory Location)
+			      +-----------+
+		    pi------> |	100	  |
+			      +-----------+
+				104    <----Address
+
+i
+-->10
+&i
+--->100
+&&i
+---> Invalid Operation. Compilation Error
+
+pi ===>100
+*pi===>10
+&&pi===>Invalid
+
+
+
+
+class Y;
+
+class X
+{
+	public:
+	Y *m_py
+};
+
+class Y{};
+----------------------+----------+----------------------------+
+
+class Y;
+
+class X
+{
+	public:
+	Y m_py
+};
+
+class Y{};
+
+
+If you want to make a pointer then forward declaration of class is acceptable.
+If you want to make an object of class then forward declaration is not sufficient.
+
+
+
+class QButton
+Class QDialog
+{
+	public:
+	QButton m_button;//this is where we need size of object
+}
+
+class QButton{};
+
+
+^ Not work
+
+-----------------------------=---------------=----
+        px				Heap
+	+------------+			+-----------+
+	| 100        |----------------->|           |
+	+------------+			+-----------+
+	100                            100 address
+  
+				object created on heap through new operator
+
+
+think about function as human beings(workers, slavers).
+
+int main()			void f()
+{				{
+	f();			}	
+	return 0;
+}
+
+      O           O
+      |-	  |-
+      /\	  /\
+      main        f
+
+
+----------------------+---------+-------------------------+
+
+	+---------------+	+---------------+	
+	|		|------>|		|	
+	+---------------+<------+---------------+
+		Object A	 Object B
+		
+	Class X			Class Y
+
+class Y;
+class X{
+	public:
+	Y *m_y
+};
+
+
+class Y{
+	public:
+	X *m_x
+
+};
+
+int main()
+
+{
+	X *px=new X();
+	Y *py=new Y();
+	px->m_y = py;
+	py->m_x = px;
+	return 0;
+}
+
+----------------------+---------+-------------------------+
+
+	+---------------+	+---------------+	
+	|		|------>|		|	
+	+---------------+<------+---------------+
+		Object A	 Object B
+
+	Class X			Class X
+
+
+class X{
+
+public:
+ X *m_x;
+};
+
+int main()
+{
+	X *px1=new X();
+	X *px2=new X();
+	px1->m_x=px2;
+	px2->m_x=px1;
+
+ return 0;
+}
+
+----------------------+---------+-------------------------+
+
+
+	+--+
+	|  | Laddo(Data, Message, Payload)
+	+--+  
+
+      O           O
+      |- -------->|-
+      /\	  /\
+      
+	Ram        Shyam
+	Caller 	   Callee
+	Sender	   Receiver
+	Client	   Server
+
+Window with gadget(additional behaviour) is called Widget
+
+window + gadget
+
+e.g.Buttons, Labels, Edit Box/Text Box, Radio Button etc.....
+
+
+----------------------+---------+-------------------------+
+
+
+Observer Design pattern;
+
+
+      
+      O           O         	O             
+      |- -------->|- -----> 	|-                   
+      /\	  /\        	/\                       
+   Rahul          Kid	         kid- Father/Subscriber
+   Client         Publisher
+		  Observable
+
+
+
+
+
+class CEventInfo
+{
+
+};
+
+//Observer is Subscriber
+class CObserver{
+	public:
+	void Update(CEventInfo& eventInfo)
+	{
+	}
+
+};
+
+
+// Observable is publisher
+class CObservable{
+	private:
+		CObserver *m_pObserver;
+	public:
+		CObservable:m_pObserver(nullpter)
+		{
+		}
+	void Register(CObsrver *pObserver)
+	{
+		m_pobserver = pobserver;
+	}
+	void RaiseEvent(CEventInfo& eventInfo)
+	{
+	  m_pObserver->Update(eventInfo)
+	}
+
+};
+
+
+
+
+int main()
+{
+	CObserver *pObserver = new CObserver();
+	CObservable *pObservable = new CObservable();
+ 
+	//pobservable->m_pobserver = pObserver;
+	pObserver->Register(pObserver);
+
+	CEventInfo eventInfo;
+	pObservable->RaiseEvent(eventInfo);
+	return 0;
+}
+
+
+
+
+
+
+What is a meta object?
+
+Defination1:- A meta object is an object which holds information about another object
+
+Def2:- A meta object is an object which holds information about a class.
+
+use def2
+
+
+Def3:- A meta object is an instance of meta class
+   (Similar to:object is an instance of a class)
+
+
+What are the typical names of metaclass
+
+CMetaclass
+CMetaObject
+CClassInfo
+
+MFC has CRiuntimeClass
+
+
+
+
+class CMetaobject
+{
+public:
+	char m_className[];
+};
+
+class CDuster
+{
+
+};
+
+class
+
+CMetaObject moOfDuster;
+
+int main()
+{
+
+strcpy(moOfduster.m_classname, "CDuster");
+return 0;
+}
+
+-----------------------------+-----------------------
+
+class CMetaobject
+{
+public:
+	char m_className[];
+};
+
+class CDuster
+{
+  static CMetaObject metaObject;
+};
+
+
+CMetaObject CDuster::metaObject;
+
+class CPen{
+
+static CMetaObject metaObject
+};
+CMetaObject CPen::metaObject
+
+int main()
+{
+
+strcpy(moOfduster.m_classname, "CDuster");
+strcpy(moOfduster.m_classname, "CPen");
+return 0;
+}
+
+
+What is primary use of metaObject?
+
+Runtime type informatiom
+i.e at runtime you want to know the information of class what is its type
+
+
+
+Separatio of Concerns
+Each object take its own responsibility
+
+
+
+MVC Framework
+
+
+
+  
+      O           O         	O     | view |   Draws on Board/Display     
+      |- -------->|- -----> 	|-                   
+      /\	  /\        	/\                       
+   Sudha          Madhura	 komal
+  	      		-
+			 \	
+			  \
+			   \	O
+				|-     /
+				/\     _//_
+			      (Pratap)
+
+
+
+Class CModel{
+
+public:
+int money;
+
+CView *pView;
+
+};
+
+
+
+Class View{
+
+public:
+CModel *pModel;
+
+};

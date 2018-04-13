@@ -1,0 +1,98 @@
+>1
+1
+>0
+0
+>a =1 a[1]
+1
+>b=a
+1
+>a
+1
+>b
+1
+
+
+>a=0
+0
+>a
+0
+>b
+1
+
+
+
+      O           
+   1-->|- -->	1
+      /\	  
+      main        
+	  
+	  qmake -project  ---->generate .pro File
+	  
+	  .pro  -->|qmake makefile|
+	  
+	  qmake -makefile 
+	  
+	  tree
+	  tree /a
+	  tree /a /f
+	  where nmake
+	  where cl.exe
+	  
+	  nmake
+	  dir
+	  release\learnQt.exe
+	  
+	  mkdir TryMoc
+	  
+	  moc a.h >a_moc.cpp
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  app.cpp
+	  
+	  
+	  
+	  
+	  #include <Qtwidgets>
+int main(int argc, char *argv[])
+{
+   //QApplication is the application main class.
+   //application is an object of Qapplication class.
+
+  QApplication application(argc, argv);
+
+  //qtEXTeDIT IS A TEXT editor widget class
+  //widget widget gadget
+  
+  QTextEdit textEdit;
+  
+  //show is method/member function of QtextEdit class.  
+  textEdit.show();
+
+//exec is a method/member function of Qapplication class.
+
+	return application.exec();
+}
+
+
+
+use nmake to compile the .pro file
+
+
+
+
+C:\Qt\Qt5.9.1\Examples\Qt-5.9.1\widgets\tutorials\gettingStarted\gsQt\part5       =====Practise ths problems
+
+QApplication ,QTextEdit, QPushButton, QLabel, 
+
+CONNECT/DISCONNECT
+
+
+MetaobjectCompiler,
+qmake;
+.pro file
+	  
